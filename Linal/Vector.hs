@@ -22,8 +22,6 @@ normalize v = fmap (/m) v
     where m = magnitude v
 
 relate f a b = zipWith f (coords a) (coords b)
-{-relate f a b = getZipList $ f <$> list a <*> list b-}
-    {-where list = ZipList . coords-}
 
 dot a b = sum $ relate (*) a b
 
