@@ -1,6 +1,8 @@
 import Linal.Vector
 import Ray
 import Camera
+import Intersection
+import Shape
 
 
 main = do
@@ -27,10 +29,9 @@ rayToPixel sceneCamera (x, y) (w, h) = Ray cameraPosition direction
 
 type Color = (Double, Double, Double)
 
-traceRay ray
-    | intersection /= Nothing = intersectionColor ray intersection
-    | otherwise               = clearColor
+traceRay ray = intersectionColor ray intersection
     where clearColor = (0, 0, 0)
           intersection = Nothing
 
-intersectionColor ray intersection = (0, 0, 0)
+intersectionColor ray (Just (Intersection shape distance)) = (0, 0, 0)
+    where normal = shapeNormal shape

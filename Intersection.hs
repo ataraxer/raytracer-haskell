@@ -1,7 +1,8 @@
 module Intersection
-( Intersection
+( Intersection(..)
 ) where
 
 import Shape
 
-type Intersection = (Shape, Double)
+data Intersection = Intersection Shape Double
+    deriving (Eq)

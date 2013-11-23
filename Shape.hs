@@ -1,5 +1,6 @@
 module Shape
 ( Shape(..)
+, shapeNormal
 ) where
 
 import Linal.Vector
@@ -8,8 +9,11 @@ import Ray
 type Color = (Double, Double, Double)
 data Shape = Plain  (Vector Double) Double Color
            | Sphere (Vector Double) Double Color
+           deriving (Eq)
 
-type Intersection = (Shape, Double)
+shapeNormal (Plain n _ _)  = n
+shapeNormal (Sphere n _ _) = n
+
 
 normalAt :: Shape -> Vector Double -> Vector Double
 normalAt (Plain  normal _ _) _ = normal
